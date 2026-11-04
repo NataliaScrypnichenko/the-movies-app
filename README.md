@@ -5,3 +5,9 @@ token
 //Ключ API
 //70c715689048342fcdbba21169ebdbe1
 
+потрібно увидалити public
+.env= по іншому записати
+
+curl --request GET \
+--url https://api.themoviedb.org/3/authentication \
+--header 'accept: application/json'
