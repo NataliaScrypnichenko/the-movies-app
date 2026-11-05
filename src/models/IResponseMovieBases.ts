@@ -6,3 +6,7 @@ export interface IResponseMovieBases {
 	total_pages: number;
 	total_results: number;
 };
+// page — номер сторінки;
+// results — масив фільмів;
+// total_pages — кількість сторінок;
+// total_results — загальна кількість фільмів.

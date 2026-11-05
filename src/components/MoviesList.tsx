@@ -1,36 +1,37 @@
 // тримує масив фільмів і передає їх для відображення.
-import {useEffect, useState} from "react";
-import type {IMovie} from "../models/IMovie.ts";
+import { useEffect, useState } from "react";
+import type { IMovie } from "../models/IMovie.ts";
+import { getMovies } from "../service/api.sevice.tsx";
+import MoviesListCard from "./MoviesListCard.tsx";
 
 
-export const baseUrl='https://api.themoviedb.org/3/discover/movie'
+export const MoviesList = () => {
 
-export const appiService=
-
-
-export const getMovies = async ():Promise<IMovie[]> => {
-   const results=fetch(appiService('/movies'))
-        .then((res) => res.json())
-        console.log(results)
-        return results;
-}
-
-const MoviesList = () => {
-       const results= movies
     const [movies, setMovies] = useState<IMovie[]>([]);
-    useEffect(() => {
-        getMovies().then(movies =>
-            console.log(movies)
-            // setMovies(movies)
-        );
-    },[])
 
+    useEffect(() => {
+        getMovies().then(movies => {
+            console.log(movies);
+            setMovies(movies);
+        });
+    }, []);
 
     return (
-        <div>
-
+        <div className="movies-list">
+            {
+                movies.map((movie) =>
+                    <MoviesListCard key={movie.id} movie={movie}/>
+                )
+            }
         </div>
     );
 };
 
 export default MoviesList;
+// Згідно із завданням, MoviesList:
+// - отримує масив фільмів;
+// - перебирає масив;
+// - передає кожен фільм у MoviesListCard;
+// - відображає список карток.
+//Наступним кроком надішли свій MoviesList.tsx. Перевіримо,
+// як ти отримуєш масив фільмів і як передавати кожен фільм у MoviesListCard.
