@@ -9,13 +9,21 @@ export const baseUrl='https://api.themoviedb.org/3'
 export const apiService = axios.create({
     baseURL:baseUrl,
     headers:{
-        'accept':' application/json',
+        'accept':'application/json',
         'Authorization': `Bearer ${token}`,
     },
 });
 
+// получити всі фільм
 export const getMovies = async ():Promise<IMovie[]> => {
-    const response= await apiService.get('/discover/movie');
-
-    return response.data.results;
+    const {data:{results}} = await apiService.get('/discover/movie')
+    return results
 };
+
+// получити окремий фільм
+export const getMovieById = async (id:number):Promise<IMovie> => {
+   const {data} =await apiService.get<IMovie>(`/movie/${id}`);
+    return data
+
+};
+

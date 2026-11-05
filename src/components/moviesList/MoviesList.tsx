@@ -1,8 +1,8 @@
 // тримує масив фільмів і передає їх для відображення.
 import { useEffect, useState } from "react";
-import type { IMovie } from "../models/IMovie.ts";
-import { getMovies } from "../service/api.sevice.tsx";
-import MoviesListCard from "./MoviesListCard.tsx";
+import type { IMovie } from "../../models/IMovie.ts";
+import { getMovies } from "../../service/api.sevice.tsx";
+import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
 
 
 export const MoviesList = () => {

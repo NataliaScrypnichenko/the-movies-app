@@ -1,9 +1,9 @@
 //Окрема картка одного фільму.
 import type {FC} from "react";
-import type {IMovie} from "../models/IMovie.ts";
-import PosterPreview from "./PosterPreview.tsx";
-import MovieInfo from "./MovieInfo.tsx";
-import StarsRating from "./StarsRating.tsx";
+import type {IMovie} from "../../models/IMovie.ts";
+import PosterPreview from "../PosterPreview.tsx";
+import MovieInfo from "../MovieInfo.tsx";
+import StarsRating from "../StarsRating.tsx";
 import './MoviesListCard.css'
 
 type MoviePropsType={
