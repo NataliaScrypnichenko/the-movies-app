@@ -1,26 +1,34 @@
 //Окрема картка одного фільму.
-import type {FC} from "react";
+import {type FC, useEffect, useState} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
-import PosterPreview from "../PosterPreview.tsx";
-import MovieInfo from "../MovieInfo.tsx";
-import StarsRating from "../StarsRating.tsx";
 import './MoviesListCard.css'
+import PosterPreview from "../PosterPreview.tsx";
+
 
 type MoviePropsType={
     movie:IMovie;
 }
 
 const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
+    //useState<string | null>(null) — створює стан для постера
+    const [poster, setPoster] = useState< string | null>(null);
+    //useEffect() — запускається після першого рендерингу.
+    useEffect(() => {
+        setPoster(movie.poster_path)//записує шлях до постера у стан.
+
+    }, [movie.poster_path]);// міняється адрес картинки
 
     return (
         <div className="movie-card">
-            <p>ID: {movie.id}</p>
             <h3>{movie.title}</h3>
-
-            <PosterPreview/>
-            <MovieInfo/>
-            {/*<GenreBadge/>*/}
-            <StarsRating/>
+            {/*{poster && ...} — перевіряє, чи є постер.
+             <PosterPreview poster_path={poster}/> — передає постер дочірньому компоненту.*/}
+            {
+                poster && <PosterPreview poster_path={poster} />
+            }
+            {/*<MovieInfo/>*/}
+            {/*/!*<GenreBadge/>*!/*/}
+            {/*<StarsRating/>*/}
         </div>
     );
 };

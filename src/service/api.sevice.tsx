@@ -26,4 +26,10 @@ export const getMovieById = async (id:number):Promise<IMovie> => {
     return data
 
 };
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//вивести постери  тому що вони беруться з іншої адреса
+export const basePosterUrl="https://image.tmdb.org/t/p/w500"
 
+export const getPosterUrl = (poster_path: string) => {
+    return basePosterUrl + poster_path;
+};
