@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import type { IMovie } from "../../models/IMovie.ts";
 import { getMovies } from "../../service/api.sevice.tsx";
 import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
-
+import './MoviesList.css'
 
 export const MoviesList = () => {
 

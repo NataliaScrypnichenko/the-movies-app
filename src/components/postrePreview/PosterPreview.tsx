@@ -1,6 +1,6 @@
 // Відображає постер фільму.
 import type {FC} from "react";
-import {getPosterUrl} from "../service/api.sevice.tsx";
+import {getPosterUrl} from "../../service/api.sevice.tsx";
 
 
 
@@ -14,7 +14,7 @@ const PosterPreview:FC<PropsTypeMovie> = ({ poster_path}) => {
      const poster =poster_path ? getPosterUrl(poster_path): null
 
     return (
-        <div>
+        <div className={poster}>
             {
                 poster && <img src={poster}  alt="Movie poster"/>
             }

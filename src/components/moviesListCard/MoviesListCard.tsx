@@ -2,7 +2,7 @@
 import {type FC, useEffect, useState} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
 import './MoviesListCard.css'
-import PosterPreview from "../PosterPreview.tsx";
+import PosterPreview from "../postrePreview/PosterPreview.tsx";
 
 
 type MoviePropsType={
