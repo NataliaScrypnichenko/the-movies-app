@@ -21,7 +21,14 @@ curl --request GET \
 рейтинг
 https://api.themoviedb.org/3/account/{account_id}/rated/movies
 
-https://api.themoviedb.org/3/collection/{collection_id}/images
 
 
 https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+
+props — передаємо інформацію між компонентами.
+useState — зберігаємо інформацію, яка може змінюватися внаслідок дій або логіки компонента.
+useEffect — виконуємо побічні дії, наприклад завантаження даних з API
+useState не обов'язково використовувати для функцій або для API. Він потрібен для зберігання значень, які можуть змінюватися, і коли ці зміни повинні відображатися на сторінці.
+потрібен тільки опис — передаємо overview;
+потрібен тільки рейтинг — передаємо vote_average;
+потрібна вся інформація про фільм — передаємо movie: IMovie.

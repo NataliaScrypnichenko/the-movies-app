@@ -2,6 +2,7 @@
 import {type FC, useEffect, useState} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
 import './MoviesListCard.css'
+import MovieInfo from "../MovieInfo.tsx";
 import PosterPreview from "../postrePreview/PosterPreview.tsx";
 
 
@@ -12,11 +13,13 @@ type MoviePropsType={
 const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
     //useState<string | null>(null) — створює стан для постера
     const [poster, setPoster] = useState< string | null>(null);
+    const [overview, setOverview] = useState<string >()
     //useEffect() — запускається після першого рендерингу.
     useEffect(() => {
         setPoster(movie.poster_path)//записує шлях до постера у стан.
-
+        setOverview(movie.overview)
     }, [movie.poster_path]);// міняється адрес картинки
+
 
     return (
         <div className="movie-card">
@@ -26,7 +29,8 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
             {
                 poster && <PosterPreview poster_path={poster} />
             }
-            {/*<MovieInfo/>*/}
+            {   overview &&  <MovieInfo overview={overview}/> }
+
             {/*/!*<GenreBadge/>*!/*/}
             {/*<StarsRating/>*/}
         </div>

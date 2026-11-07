@@ -33,3 +33,6 @@ export const basePosterUrl="https://image.tmdb.org/t/p/w500"
 export const getPosterUrl = (poster_path: string) => {
     return basePosterUrl + poster_path;
 };
+
+//Ищите фильмы по их оригинальным, переведенным и альтернативным названиям
+// https://api.themoviedb.org/3/search/movie
