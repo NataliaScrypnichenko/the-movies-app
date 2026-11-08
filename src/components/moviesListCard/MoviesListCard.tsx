@@ -18,7 +18,7 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
     useEffect(() => {
         setPoster(movie.poster_path)//записує шлях до постера у стан.
         setOverview(movie.overview)
-    }, [movie.poster_path]);// міняється адрес картинки
+    }, [movie.poster_path,movie.overview]);// міняється адрес картинки
 
 
     return (
