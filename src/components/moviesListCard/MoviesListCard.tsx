@@ -4,6 +4,7 @@ import type {IMovie} from "../../models/IMovie.ts";
 import './MoviesListCard.css'
 import MovieInfo from "../MovieInfo.tsx";
 import PosterPreview from "../postrePreview/PosterPreview.tsx";
+import StarsRating from "../StarsRating.tsx";
 
 
 type MoviePropsType={
@@ -13,7 +14,7 @@ type MoviePropsType={
 const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
     //useState<string | null>(null) — створює стан для постера
     const [poster, setPoster] = useState< string | null>(null);
-    const [overview, setOverview] = useState<string >()
+    const [overview, setOverview] = useState<string >();
     //useEffect() — запускається після першого рендерингу.
     useEffect(() => {
         setPoster(movie.poster_path)//записує шлях до постера у стан.
@@ -32,7 +33,7 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
             {   overview &&  <MovieInfo overview={overview}/> }
 
             {/*/!*<GenreBadge/>*!/*/}
-            {/*<StarsRating/>*/}
+            <StarsRating/>
         </div>
     );
 };

@@ -1,9 +1,13 @@
 // Показує рейтинг фільму у вигляді зірок.
 
 
-const StarsRating = () => {
+
+const StarsRating= () => {
+
+
     return (
         <div>
+
 
         </div>
     );

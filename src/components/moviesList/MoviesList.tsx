@@ -1,20 +1,27 @@
 // тримує масив фільмів і передає їх для відображення.
 import { useEffect, useState } from "react";
 import type { IMovie } from "../../models/IMovie.ts";
-import { getMovies } from "../../service/api.sevice.tsx";
+import { getMoviesPage} from "../../service/api.sevice.tsx";
 import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
 import './MoviesList.css'
+import PaginationComponent from "../../pagination/PaginationComponent.tsx";
+import {useSearchParams} from "react-router-dom";
 
 export const MoviesList = () => {
+
+    const [query]=useSearchParams({page:'1'});
 
     const [movies, setMovies] = useState<IMovie[]>([]);
 
     useEffect(() => {
-        getMovies().then(movies => {
-            console.log(movies);
+
+    let currentPage=Number(query.get('page') || 1);
+
+        getMoviesPage(currentPage).then((movies) => {
             setMovies(movies);
+            console.log(movies);
         });
-    }, []);
+    }, [query]);
 
     return (
         <div className="movies-list">
@@ -23,6 +30,7 @@ export const MoviesList = () => {
                     <MoviesListCard key={movie.id} movie={movie}/>
                 )
             }
+            <PaginationComponent/>
         </div>
     );
 };
