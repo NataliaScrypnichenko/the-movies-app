@@ -2,8 +2,6 @@ import axios from "axios";
 import type {IMovie} from "../models/IMovie.ts";
 import type {IResponseMovieBases} from "../models/IResponseMovieBases.ts";
 
-
-
 export const token=import.meta.env.VITE_TMDB_TOKEN
 
 export const baseUrl='https://api.themoviedb.org/3'
@@ -20,7 +18,7 @@ export const apiService = axios.create({
 });
 
 //Отримаю фільми з конкретної сторінки
-export const getMoviesPage = async (page: number) => {
+export const getMoviesPage = async (page: number): Promise<IMovie[]>  => {
     const {data:{results}} = await apiService.get<IResponseMovieBases>(`/discover/movie?page=${page}`);
     return  results
 };
