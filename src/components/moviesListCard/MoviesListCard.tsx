@@ -6,20 +6,23 @@ import MovieInfo from "../MovieInfo.tsx";
 import PosterPreview from "../postrePreview/PosterPreview.tsx";
 import StarsRating from "../StarsRating.tsx";
 
-
 type MoviePropsType={
     movie:IMovie;
-}
+};
 
 const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
     //useState<string | null>(null) — створює стан для постера
     const [poster, setPoster] = useState< string | null>(null);
+
+    const [rating, setRating] = useState<number | null>(null);
+
     const [overview, setOverview] = useState<string >();
     //useEffect() — запускається після першого рендерингу.
     useEffect(() => {
         setPoster(movie.poster_path)//записує шлях до постера у стан.
         setOverview(movie.overview)
-    }, [movie.poster_path,movie.overview]);// міняється адрес картинки
+        setRating(movie.vote_average)
+    }, [movie.poster_path,movie.overview,movie.vote_average]);// міняється адрес картинки
 
 
     return (
@@ -30,10 +33,16 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
             {
                 poster && <PosterPreview poster_path={poster} />
             }
-            {   overview &&  <MovieInfo overview={overview}/> }
+            {
+                overview &&  <MovieInfo overview={overview}/>
+            }
 
             {/*/!*<GenreBadge/>*!/*/}
-            <StarsRating/>
+
+            {
+                rating && <StarsRating vote_average={rating}/>
+            }
+
         </div>
     );
 };
