@@ -17,11 +17,3 @@ const MovieInfo:FC< PropsTypeMovieOverview> = ({overview}) => {
 };
 
 export default MovieInfo;
-
-//const MovieInfo: FC<MoviePropsType> = ({ movie }) => {
-//     return (
-//         <div>
-//             {movie.overview && <p>{movie.overview}</p>}
-//         </div>
-//     );
-// };

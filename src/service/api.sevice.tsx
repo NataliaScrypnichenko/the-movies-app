@@ -5,7 +5,7 @@ import type {IResponseMovieBases} from "../models/IResponseMovieBases.ts";
 
 export const token=import.meta.env.VITE_TMDB_TOKEN
 
-export const baseUrl='https://api.themoviedb.org/3'
+export const baseUrl='https://api.themoviedb.org/3/discover'
 
 //вивести постери, тому що вони беруться з іншої адреса
 export const basePosterUrl="https://image.tmdb.org/t/p/w500"
@@ -20,7 +20,7 @@ export const apiService = axios.create({
 
 //Отримаю фільми з конкретної сторінки
 export const getMoviesPage = async (page: number): Promise<IMovie[]>  => {
-    const {data:{results}} = await apiService.get<IResponseMovieBases>(`/discover/movie?page=${page}`);
+    const {data:{results}} = await apiService.get<IResponseMovieBases>(`/movie?page=${page}`);
     return  results
 };
 

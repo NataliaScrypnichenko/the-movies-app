@@ -1,15 +1,17 @@
 
+import MovieDetailsComponent from "../components/MovieDetails/MovieDetailsComponent.tsx";
+
+
+
 const MovieDetailsPage = () => {
+
+
     return (
         <div>
-            MovieDetailsPage
-
-
-
+              <MovieDetailsComponent/>
         </div>
     );
 };
 
 export default MovieDetailsPage;
-//На сторінці MovieDetailsPage ти зможеш отримати цей ID через useParams()
-// і завантажити інформацію про конкретний фільм.
+

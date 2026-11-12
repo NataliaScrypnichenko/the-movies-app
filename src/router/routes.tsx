@@ -5,11 +5,15 @@
 
 
     export const routes = createBrowserRouter([
-         {path:'/',element:<App/>, children:[
-                 { path: 'discover/movie', element: <MoviesPage/>},
-                 {path: 'movie/details', element: <MovieDetailsPage/>}
-            ]
-         }
+        {
+            path: '/', element: <App/>, children: [
+                //index: true — означає, що MoviesPage буде відображатися на головній адресі http://localhost:5173/.
+                { index: true, element: <MoviesPage /> },
+                {path: '/movie', element: <MoviesPage/>},
+                {path: 'movie/:id', element: <MovieDetailsPage/>},
+             ]
+        }
+
     ]);
     // Компонент	Для чого потрібен
     // Header	Верхня частина сайту. Логотип, меню, можливо, пошук.
