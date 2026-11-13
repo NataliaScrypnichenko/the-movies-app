@@ -7,6 +7,7 @@ import PosterPreview from "../postrePreview/PosterPreview.tsx";
 
 
 const MovieDetailsComponent = () => {
+    // дістаю {id} щоб з ним працювати можна було б
    const {id}= useParams();
     console.log(id);
 
@@ -21,10 +22,10 @@ const MovieDetailsComponent = () => {
                 .then(value => {
                 console.log(value)
                     setMovie(value)
-                    setPoster(movie.poster_path)//записує шлях до постера у стан.
+                    setPoster(value.poster_path)//записує шлях до постера у стан.
             })
         }
-    }, [id,movie.poster_path]);
+    }, [id]);
 
     // Перевіряємо, чи отримали дані про фільм
     if (!movie) {
@@ -35,7 +36,7 @@ const MovieDetailsComponent = () => {
         <div>
             MovieDetailsComponent
             {
-                poster && <PosterPreview poster_path={poster} id={movie.id} />
+                     poster && <PosterPreview poster_path={poster} id={movie.id} />
             }
             {
                  <div>

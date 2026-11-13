@@ -52,9 +52,8 @@ export const getMoviePopular= async (ppopularity:number): Promise<IMovie> => {
      return data
 };
 
-// curl --request GET \
-//      --url 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc' \
-//      --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.
-//      eyJhdWQiOiI3MGM3MTU2ODkwNDgzNDJmY2RiYmEyMTE2OWViZGJlMSIsIm5iZiI6MTc5MzcwODIyNi41OTEsInN1YiI6IjZhZTlkMGMyYmZkZDc1MTQ2OWJhNDRiNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.
-//      YHqcNm98nbsKF_GDc_1ywhLr59yanqNviZxzxtHFvo0' \
-//      --header 'accept: application/json'
+
+
+
+///search/movie?query=Batman — шукати фільми за назвою.
+// /genre/movie/list=  Жанри фільмів
