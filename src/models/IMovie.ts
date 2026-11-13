@@ -1,3 +1,5 @@
+
+
 export interface IMovie {
     adult: boolean;
     backdrop_path: string;

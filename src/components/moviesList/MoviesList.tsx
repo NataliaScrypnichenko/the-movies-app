@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import type { IMovie } from "../../models/IMovie.ts";
 import { getMoviesPage} from "../../service/api.sevice.tsx";
-import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
+
 import './MoviesList.css'
 import PaginationComponent from "../../pagination/PaginationComponent.tsx";
 import {useSearchParams} from "react-router-dom";
+import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
 
 export const MoviesList = () => {
 

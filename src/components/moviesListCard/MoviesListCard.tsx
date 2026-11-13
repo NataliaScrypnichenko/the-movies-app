@@ -5,8 +5,6 @@ import './MoviesListCard.css'
 import MovieInfo from "../MovieInfo.tsx";
 import PosterPreview from "../postrePreview/PosterPreview.tsx";
 import StarsRating from "../StarsRating.tsx";
-import {Link} from "react-router-dom";
-
 
 
 type MoviePropsType={
@@ -34,10 +32,8 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
     return (
         <div className="movie-card">
             {
-                poster &&
-                <Link to={'movie/:id'}>
-                <PosterPreview poster_path={poster} />
-                    </Link>
+                poster && <PosterPreview poster_path={poster} id={movie.id} />
+
             }
             <h3>{movie.title}</h3>
             {/*{poster && ...} — перевіряє, чи є постер.
