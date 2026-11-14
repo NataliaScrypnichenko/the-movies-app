@@ -78,6 +78,16 @@ export const getGenresMovie = async (): Promise<IResponseGenreBases> => {
     return data;
 };
 
+// Отримати фільми за конкретним жанром
+export const getMoviesByGenre = async (id: number,page:number):
+    Promise<IResponseMovieBases> => {
+
+    // Робимо запит до сервера, передаючи ID жанру і сторінку
+    const {data} = await apiService.get<IResponseMovieBases>
+    (`/discover/movie?with_genres=${id}&page=${page}`)
+    // Повертаємо отримані фільми
+    return data;
+};
 
 ///search/movie?query=Batman — шукати фільми за назвою.
 

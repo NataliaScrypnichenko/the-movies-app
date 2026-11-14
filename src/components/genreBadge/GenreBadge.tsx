@@ -1,7 +1,6 @@
 // Показує жанр у вигляді невеликої позначки.
 
 import {Link} from "react-router-dom";
-import './GenreBadge.css'
 import {useEffect, useState} from "react";
 import type {IGenre} from "../../models/IGenre.ts";
 import {getGenresMovie} from "../../service/api.sevice.tsx";

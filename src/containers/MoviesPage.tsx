@@ -10,7 +10,6 @@ const MoviesPage = () => {
         <div>
             <GenreBadge/>
             <MoviesList/>
-
         </div>
     );
 };
