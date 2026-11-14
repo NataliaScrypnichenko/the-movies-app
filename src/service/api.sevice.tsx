@@ -2,8 +2,10 @@ import axios from "axios";
 import type {IMovie} from "../models/IMovie.ts";
 import type {IResponseMovieBases} from "../models/IResponseMovieBases.ts";
 import type {IMovieDetails} from "../models/IMovieDetails.ts";
+import type {IResponseGenreBases} from "../models/IResponseGenreBases.ts";
 
 
+//https://api.themoviedb.org/3/genre/movie/list
 export const token=import.meta.env.VITE_TMDB_TOKEN
 
 export const baseUrl='https://api.themoviedb.org/3'
@@ -52,8 +54,30 @@ export const getMoviePopular= async (ppopularity:number): Promise<IMovie> => {
      return data
 };
 
+//отримати жари
+// Сервер сам повертає весь список жанрів. Тому параметр нам не потрібен.=async ()
+// Promise — це обіцянка, що результат буде отриманий пізніше.
+// А що означає IResponseGenreBases?
+// Це твій інтерфейс TypeScript, який описує структуру відповіді сервера.
+// Promise<IResponseGenreBases>означає:
+// функція поверне Promise, результатом якого буде об'єкт типу IResponseGenreBases
+// await apiService.get<IResponseGenreBases>('/genre/movie/list');
+// Ми говоримо Axios:«Зроби GET-запит до сервера за адресою /genre/movie/list».
+//GET — це метод HTTP, який використовується для отримання інформації.
+// await Означає: дочекайся відповіді сервера, перш ніж виконувати наступний рядок
+// <IResponseGenreBases>Це тип відповіді, який ми вказуємо для TypeScript.
+// const {data} =Axios повертає об'єкт відповіді, в якому є багато властивостей. Нас зараз цікавить data,
+// тому ми дістаємо її через деструктуризацію. У data знаходиться інформація, яку повернув сервер.
+// Отримати список жанрів фільмів
+export const getGenresMovie = async (): Promise<IResponseGenreBases> => {
 
+    // Робимо GET-запит до сервера та чекаємо на відповідь
+    const {data} = await apiService.get<IResponseGenreBases>('/genre/movie/list');
+
+    // Повертаємо отримані дані
+    return data;
+};
 
 
 ///search/movie?query=Batman — шукати фільми за назвою.
-// /genre/movie/list=  Жанри фільмів
+

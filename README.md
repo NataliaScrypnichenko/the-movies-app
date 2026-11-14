@@ -32,3 +32,12 @@ useState не обов'язково використовувати для фун
 потрібен тільки опис — передаємо overview;
 потрібен тільки рейтинг — передаємо vote_average;
 потрібна вся інформація про фільм — передаємо movie: IMovie.
+
+
+curl --request GET \
+--url 'https://api.themoviedb.org/3/movie/11?append_to_response=videos' \
+
+curl --request GET \
+--url 'https://api.themoviedb.org/3/genre/movie/list?language=en' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MGM3MTU2ODkwNDgzNDJmY2RiYmEyMTE2OWViZGJlMSIsIm5iZiI6MTc5MzcwODIyNi41OTEsInN1YiI6IjZhZTlkMGMyYmZkZDc1MTQ2OWJhNDRiNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YHqcNm98nbsKF_GDc_1ywhLr59yanqNviZxzxtHFvo0' \
+--header 'accept: application/json'

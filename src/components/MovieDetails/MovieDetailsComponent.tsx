@@ -32,31 +32,65 @@ const MovieDetailsComponent = () => {
         return <p>Loading...</p>;
     };
 
+    // return (
+    //     <div>
+    //         MovieDetailsComponent
+    //         {
+    //                  poster && <PosterPreview poster_path={poster} id={movie.id} />
+    //         }
+    //         {
+    //              <div>
+    //               <p>ID: {movie.id}</p>
+    //                <h2>{movie.title}</h2>
+    //                  <p>Original title: {movie.original_title}</p>
+    //                 <p>Language: {movie.original_language}</p>
+    //                  <p>Overview: {movie.overview}</p>
+    //                <p>Release date: {movie.release_date}</p>
+    //                  <p>Popularity: {movie.popularity}</p>
+    //                <p>Rating: {movie.vote_average}</p>
+    //                  <p>Votes: {movie.vote_count}</p>
+    //                 <p>Adult: {movie.adult ? "Yes" : "No"}</p>
+    //                <p>Video: {movie.video ? "Yes" : "No"}</p>
+    //                <p>  Genres: {movie.genres
+    //                    .map(genre => genre.name)
+    //                    .join(", ")}
+    //                </p>
+    //             </div>
+    //         }
+    //     </div>
+    // );
+
     return (
-        <div>
-            MovieDetailsComponent
-            {
-                     poster && <PosterPreview poster_path={poster} id={movie.id} />
-            }
-            {
-                 <div>
-                  <p>ID: {movie.id}</p>
-                   <h2>{movie.title}</h2>
-                     <p>Original title: {movie.original_title}</p>
-                    <p>Language: {movie.original_language}</p>
-                     <p>Overview: {movie.overview}</p>
-                   <p>Release date: {movie.release_date}</p>
-                     <p>Popularity: {movie.popularity}</p>
-                   <p>Rating: {movie.vote_average}</p>
-                     <p>Votes: {movie.vote_count}</p>
-                    <p>Adult: {movie.adult ? "Yes" : "No"}</p>
-                   <p>Video: {movie.video ? "Yes" : "No"}</p>
-                   <p>  Genres: {movie.genres
-                       .map(genre => genre.name)
-                       .join(", ")}
-                   </p>
-                </div>
-            }
+        <div className="movie-details">
+            <div className="movie-details-poster">
+                {
+                    poster && <PosterPreview poster_path={poster} id={movie.id} />
+                }
+            </div>
+
+            <div className="movie-details-info">
+                <h2>{movie.title}</h2>
+
+                <p><strong>ID:</strong> {movie.id}</p>
+                <p><strong>Original title:</strong> {movie.original_title}</p>
+                <p><strong>Language:</strong> {movie.original_language}</p>
+                <p><strong>Release date:</strong> {movie.release_date}</p>
+
+                <p><strong>Overview:</strong> {movie.overview}</p>
+
+                <p>
+                    <strong>Genres:</strong>{" "}
+                    {movie.genres.map(genre => genre.name).join(", ")}
+                </p>
+
+                <p><strong>Popularity:</strong> {movie.popularity}</p>
+                <p><strong>Rating:</strong> {movie.vote_average} / 10</p>
+                <p><strong>Votes:</strong> {movie.vote_count}</p>
+
+                <p><strong>Adult:</strong> {movie.adult ? "Yes" : "No"}</p>
+                <p><strong>Video:</strong> {movie.video ? "Yes" : "No"}</p>
+                <p><strong>Backdrop:</strong> {movie.backdrop_path ? "Available" : "Not available"}</p>
+            </div>
         </div>
     );
 };

@@ -2,13 +2,16 @@
     import App from "../App.tsx";
     import MoviesPage from "../containers/MoviesPage.tsx";
     import MovieDetailsPage from "../containers/MovieDetailsPage.tsx";
+    // import GenreBadgePage from "../containers/GenreBadgePage.tsx";
+
 
 
     export const routes = createBrowserRouter([
         {
             path: '/', element: <App/>, children: [
                 //index: true — означає, що MoviesPage буде відображатися на головній адресі http://localhost:5173/.
-                { index: true, element: <MoviesPage /> },
+                { index: true, element: <MoviesPage />},
+                {path:'genre/movie',element:<MoviesPage />},
                 {path: '/movie', element: <MoviesPage/>},
                 {path: 'movie/:id', element: <MovieDetailsPage/>},
              ]
