@@ -17,7 +17,6 @@ const GenreBadge = () => {
             })
     })
 
-
     return (
         <div>
             <div className="genreBadge">
@@ -29,25 +28,6 @@ const GenreBadge = () => {
                         </Link>
                     ))
                 }
-
-
-                {/*<Link to={'/genre/genre_ids/list'}>Action</Link>*/}
-                {/*<Link to={'/genre/genre_ids/list'}>Adventure</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Animation</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Comedy</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Crime</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>DDocumentary</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Drama</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Family</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Fantasy</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>History</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Music</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Romance</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Science Fiction</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>TV Movie</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Thriller</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>War</Link>*/}
-                {/*<Link to={'/genre/movie/list'}>Western</Link>*/}
 
             </div>
         </div>

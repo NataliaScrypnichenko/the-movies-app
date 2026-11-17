@@ -46,7 +46,7 @@ export const getPosterUrl =  (poster_path: string)=> {
 };
 
 //Ищите фильмы по их оригинальным, переведенным и альтернативным названиям
-// https://api.themoviedb.org/3/search/movie
+// https://api.themoviedb.org/3/search/movie?query=
 
 //рейтинг фильму поки не потрібно
 export const getMoviePopular= async (ppopularity:number): Promise<IMovie> => {
@@ -91,3 +91,7 @@ export const getMoviesByGenre = async (id: number,page:number):
 
 ///search/movie?query=Batman — шукати фільми за назвою.
 
+export const searchMovie=async (query:string): Promise<IResponseMovieBases> => {
+   const {data} =await apiService.get<IResponseMovieBases>(`/discover/movie?query=${query}`);
+   return data;
+};
