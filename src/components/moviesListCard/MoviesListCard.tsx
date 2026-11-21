@@ -9,7 +9,6 @@ import StarsRating from "../StarsRating.tsx";
 
 type MoviePropsType={
     movie:IMovie;
-
 };
 
 const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
@@ -44,11 +43,9 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
             }
 
             {/*/!*<GenreBadge/>*!/*/}
-
             {
                 rating && <StarsRating vote_average={rating}/>
             }
-
         </div>
     );
 };

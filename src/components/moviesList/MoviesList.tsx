@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import type { IMovie } from "../../models/IMovie.ts";
 import { getMoviesPage} from "../../service/api.sevice.tsx";
-
 import './MoviesList.css'
 import PaginationComponent from "../../pagination/PaginationComponent.tsx";
 import {useSearchParams} from "react-router-dom";
@@ -28,7 +27,7 @@ export const MoviesList = () => {
         <div className="movies-list">
             {
                 movies.map((movie) =>
-                    <MoviesListCard key={movie.id} movie={movie}/>
+                    <MoviesListCard key={movie.id} movie={movie} />
                 )
             }
             <PaginationComponent/>

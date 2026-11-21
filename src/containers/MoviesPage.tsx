@@ -1,9 +1,6 @@
 import MoviesList from "../components/moviesList/MoviesList.tsx";
 import GenreBadge from "../components/genreBadge/GenreBadge.tsx";
 
-
-
-
 const MoviesPage = () => {
 
     return (

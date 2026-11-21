@@ -3,44 +3,46 @@
 //- всі фільми (getMovies), окремий фільм, пошук, сортування
 // ) пошук фільмів по назві, або частині назви. подивитись що саме дає зараз апі, бо вона змінюється
 
-
-
-
 import {useForm} from "react-hook-form";
-
-
+import {joiResolver} from "@hookform/resolvers/joi";
+import movieValidator from "../validators/movie.validator.ts";
+import type {FC} from "react";
 
 interface IFromMovie {
     query: string;
-}
+};
 
+//
+type PropsFormMovie = {
+    onSearch: (query: string) => void;
+};
 
-const Header= () => {
+const Header: FC<PropsFormMovie >= ({onSearch}) => {
 
-  const {register,handleSubmit,formState:{errors}}= useForm<IFromMovie>()
+    const {register,handleSubmit,formState:{errors, isValid}}=
+        useForm<IFromMovie>({mode: 'all', resolver: joiResolver(movieValidator)});
 
     const onSearchSubmit=(data:IFromMovie)=>{
-      console.log(data);
-    }
+        //передає саме рядок,
+       onSearch(data.query);
+    };
+
 
     return (
         <div>
             <h1>Discover Movies</h1>
             <div>
-                <form onSubmit={handleSubmit(onSearchSubmit)} >
-                <input type="text" placeholder="Search..." {...register(
-                    "query",{
-                        required:true,
-                        // minLength:{value:/^[a-zA-Z0-9\s'-]$/, message:"Enter at least 2 characters"},
-                        pattern:{
-                            value:/^[a-zA-Z0-9\s'’-]{2,} +$/,
-                            message:"Please enter a movie title using English letters",},
-                    })}/>
+                <form onSubmit={handleSubmit(onSearchSubmit)}>
+
+                    <input type="text" placeholder="Search..." {...register("query")}/>
+
                     {errors.query && <p>{errors.query.message}</p>}
-                <button >spend</button>
+
+                    <button type="submit" disabled={!isValid}>
+                        Search
+                    </button>
                 </form>
             </div>
-
         </div>
     );
 };
