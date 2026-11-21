@@ -3,6 +3,7 @@
     import MoviesPage from "../containers/MoviesPage.tsx";
     import MovieDetailsPage from "../containers/MovieDetailsPage.tsx";
     import GenreMoviesPage from "../containers/GenreMoviesPage.tsx";
+    import SearchPage from "../containers/SearchPage.tsx";
 
 
 
@@ -11,10 +12,11 @@
             path: '/', element: <App/>, children: [
                 //index: true — означає, що MoviesPage буде відображатися на головній адресі http://localhost:5173/.
                 { index: true, element: <MoviesPage />},
-                {path: '/movie', element: <MoviesPage/>},
+                {path: 'movie', element: <MoviesPage/>},
                 {path: 'movie/:id', element: <MovieDetailsPage/>},
                 // genre/:id означає, що ID жанру буде змінюватися.
                 {path: 'genre/:id', element: <GenreMoviesPage/>},
+                {path:'/search', element:<SearchPage/>}
              ]
         }
 

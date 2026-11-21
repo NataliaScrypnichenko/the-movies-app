@@ -98,6 +98,7 @@ export const getMoviesByGenre = async (id: number,page:number):
 
 //Тут Axios сам формує URL і кодує параметри.
 export const searchMovie = async (query: string): Promise<IResponseMovieBases> => {
-    const {data} = await apiService.get<IResponseMovieBases>('/search/movie', {params: {query: query}});
+    const {data} = await apiService.get<IResponseMovieBases>
+    ('/search/movie', {params: {query: query}});
     return data;
 };

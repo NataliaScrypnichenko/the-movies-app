@@ -1,4 +1,4 @@
-//відповідає тільки за відображення результатів пошуку.
+//тільки відображатиме картки знайдених фільмів.
 import type {FC} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
 import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
@@ -8,7 +8,7 @@ type PropsType = {
     movies: IMovie[];
 };
 
-const SearchResults: FC<PropsType> = ({movies}) => {
+const SearchMovie: FC<PropsType> = ({movies}) => {
     return (
         <div className="movies-list">
             {movies.map((movie) =>
@@ -18,7 +18,7 @@ const SearchResults: FC<PropsType> = ({movies}) => {
     );
 };
 
-export default SearchResults;
+export default SearchMovie;
 //movies — масив фільмів, отриманих після пошуку.
 // map() перебирає цей масив.
 // MoviesListCard — та сама картка, яка використовується у звичайному списку.

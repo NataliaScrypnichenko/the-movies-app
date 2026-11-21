@@ -1,31 +1,41 @@
-import {useState} from "react";
+// отримуватиме пошуковий запит з URL, звертатиметься до API та зберігатиме результати.
+
+import {useEffect, useState} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
 import {searchMovie} from "../../service/api.sevice.tsx";
-import Header from "../Header.tsx";
-import MoviesList from "../moviesList/MoviesList.tsx";
-import SearchResults from "./SearchResults.tsx";
-
+import {useSearchParams} from "react-router-dom";
+import SearchMovie from "./SearchMovie.tsx";
 
 const SearchMovies = () => {
 
+    // Отримаю параметри з URL
+    const [searchParams] = useSearchParams();
+
+    // Дістаю назву фільму з параметра query та || "" означає: якщо параметра немає, використовуємо порожній рядок.
+    const query = searchParams.get("query") || "";
+
+    // Створюю стан для зберігання знайдених фільмів
     const [movies, setMovies] = useState<IMovie[]>([]);
 
-    const [isSearching, setIsSearching] = useState(false);
+    // Виконуємо пошук, коли змінюється назва фільму
+    useEffect(() => {
 
-    const searchMovieHandler = async (query: string) => {
-        const response = await searchMovie(query);
-           console.log(response.results);
-        setMovies(response.results);
-        setIsSearching(true);
-    };
+        // Якщо пошукового запиту немає, очищаємо список
+        if (!query) {
+            setMovies([]);
+            return;
+        }
+
+        // Звертаємося до API та отримуємо знайдені фільми
+        searchMovie(query).then(response => {
+            setMovies(response.results);
+        });
+
+    }, [query]);
 
     return (
         <div>
-            <Header onSearch={searchMovieHandler}/>
-
-            {
-                isSearching ? <SearchResults movies={movies}/> : <MoviesList/>
-            }
+            <SearchMovie movies={movies}/>
         </div>
     );
 };
