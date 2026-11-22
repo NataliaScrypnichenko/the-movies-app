@@ -1,7 +1,9 @@
 // тримує масив фільмів і передає їх для відображення.
+
 import { useEffect, useState } from "react";
 import type { IMovie } from "../../models/IMovie.ts";
-import { getMoviesPage} from "../../service/api.sevice.tsx";
+import type { IGenre } from "../../models/IGenre.ts";
+import { getMoviesPage, getGenresMovie } from "../../service/api.sevice.tsx";
 import './MoviesList.css'
 import PaginationComponent from "../../pagination/PaginationComponent.tsx";
 import {useSearchParams} from "react-router-dom";
@@ -13,21 +15,31 @@ export const MoviesList = () => {
 
     const [movies, setMovies] = useState<IMovie[]>([]);
 
-    useEffect(() => {
+    const [genres, setGenres] = useState<IGenre[]>([]);
 
-    let currentPage=Number(query.get('page') || 1);
+    useEffect(() => {
+        let currentPage=Number(query.get('page') || 1);
 
         getMoviesPage(currentPage).then((movies) => {
             setMovies(movies);
-            console.log(movies);
         });
     }, [query]);
+
+    useEffect(() => {
+        getGenresMovie().then(value => {
+            setGenres(value.genres);
+        });
+    }, []);
 
     return (
         <div className="movies-list">
             {
                 movies.map((movie) =>
-                    <MoviesListCard key={movie.id} movie={movie} />
+                    <MoviesListCard
+                        key={movie.id}
+                        movie={movie}
+                        genres={genres}
+                    />
                 )
             }
             <PaginationComponent/>
@@ -36,6 +48,7 @@ export const MoviesList = () => {
 };
 
 export default MoviesList;
+
 // Згідно із завданням, MoviesList:
 // - отримує масив фільмів;
 // - перебирає масив;

@@ -2,9 +2,10 @@
 
 import {useEffect, useState} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
-import {searchMovie} from "../../service/api.sevice.tsx";
+import {getGenresMovie, searchMovie} from "../../service/api.sevice.tsx";
 import {useSearchParams} from "react-router-dom";
 import SearchMovie from "./SearchMovie.tsx";
+import type {IGenre} from "../../models/IGenre.ts";
 
 const SearchMovies = () => {
 
@@ -16,6 +17,16 @@ const SearchMovies = () => {
 
     // Створюю стан для зберігання знайдених фільмів
     const [movies, setMovies] = useState<IMovie[]>([]);
+
+    const [genres, setGenres] = useState<IGenre[]>([]);
+
+    // завантажує жанри один раз
+    useEffect(() => {
+        getGenresMovie().then(value => {
+            setGenres(value.genres);
+        });
+    }, []);
+
 
     // Виконуємо пошук, коли змінюється назва фільму
     useEffect(() => {
@@ -35,7 +46,7 @@ const SearchMovies = () => {
 
     return (
         <div>
-            <SearchMovie movies={movies}/>
+            <SearchMovie movies={movies} genres={genres}/>
         </div>
     );
 };

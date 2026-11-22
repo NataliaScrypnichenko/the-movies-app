@@ -5,13 +5,16 @@ import './MoviesListCard.css'
 import MovieInfo from "../MovieInfo.tsx";
 import PosterPreview from "../postrePreview/PosterPreview.tsx";
 import StarsRating from "../StarsRating.tsx";
+import GenreBadge from "../genreBadge/GenreBadge.tsx";
+import type {IGenre} from "../../models/IGenre.ts";
 
 
 type MoviePropsType={
     movie:IMovie;
+    genres: IGenre[];
 };
-
-const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
+// movie — отримуємо інформацію про фільм.genres — отримуємо масив усіх жанрів.
+const MoviesListCard:FC<MoviePropsType> = ({movie, genres}) => {
     //useState<string | null>(null) — створює стан для постера
     const [poster, setPoster] = useState< string | null>(null);
     //передаю рейтинг фільму в глядачів
@@ -42,9 +45,14 @@ const MoviesListCard:FC<MoviePropsType> = ({movie}) => {
                 overview &&  <MovieInfo overview={overview}/>
             }
 
-            {/*/!*<GenreBadge/>*!/*/}
+
             {
                 rating && <StarsRating vote_average={rating}/>
+            }
+            {
+                // movie.genre_ids — ID жанрів конкретного фільму.
+                // genres — список усіх жанрів із їхніми назвами.
+                <GenreBadge genre_ids={movie.genre_ids} genres={genres}/>
             }
         </div>
     );
