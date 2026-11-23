@@ -47,7 +47,7 @@ const MoviesListCard:FC<MoviePropsType> = ({movie, genres}) => {
 
 
             {
-                rating && <StarsRating vote_average={rating}/>
+                rating !== null && <StarsRating vote_average={rating}/>
             }
             {
                 // movie.genre_ids — ID жанрів конкретного фільму.

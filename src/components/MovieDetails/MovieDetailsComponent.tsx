@@ -32,34 +32,6 @@ const MovieDetailsComponent = () => {
         return <p>Loading...</p>;
     };
 
-    // return (
-    //     <div>
-    //         MovieDetailsComponent
-    //         {
-    //                  poster && <PosterPreview poster_path={poster} id={movie.id} />
-    //         }
-    //         {
-    //              <div>
-    //               <p>ID: {movie.id}</p>
-    //                <h2>{movie.title}</h2>
-    //                  <p>Original title: {movie.original_title}</p>
-    //                 <p>Language: {movie.original_language}</p>
-    //                  <p>Overview: {movie.overview}</p>
-    //                <p>Release date: {movie.release_date}</p>
-    //                  <p>Popularity: {movie.popularity}</p>
-    //                <p>Rating: {movie.vote_average}</p>
-    //                  <p>Votes: {movie.vote_count}</p>
-    //                 <p>Adult: {movie.adult ? "Yes" : "No"}</p>
-    //                <p>Video: {movie.video ? "Yes" : "No"}</p>
-    //                <p>  Genres: {movie.genres
-    //                    .map(genre => genre.name)
-    //                    .join(", ")}
-    //                </p>
-    //             </div>
-    //         }
-    //     </div>
-    // );
-
     return (
         <div className="movie-details">
             <div className="movie-details-poster">
