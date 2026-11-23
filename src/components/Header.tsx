@@ -15,6 +15,7 @@ import movieValidator from "../validators/movie.validator.ts";
 //Він дозволяє програмно переходити з однієї сторінки на іншу.
 import {useNavigate} from "react-router-dom";
 import UserInfo from "./userInfo/UserInfo.tsx";
+import GenreBadge from "./genreBadge/GenreBadge.tsx";
 
 //Головне завдання цього компонента: отримати назву фільму з поля пошуку, перевірити її
 // за допомогою Joi та перейти на сторінку пошуку.
@@ -78,8 +79,8 @@ const Header = () => {
                     <button type="submit" disabled={!isValid}>
                         Search
                     </button>
-
                 </form>
+                <GenreBadge/>
             </div>
         </div>
     );
