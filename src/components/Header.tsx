@@ -28,7 +28,7 @@ interface IFromMovie {
 const Header = () => {
 //за допомоги хука буду переходити на іншу сторінку
     const navigate = useNavigate();
-//register-Реєструє поле форми та зв'язує його з react-hook-form
+    //register-Реєструє поле форми та зв'язує його з react-hook-form
     //handleSubmit-Обробляє відправлення форму та запускає перевірку
     //errors-Містить помилки валідації..isValid-Показує, чи пройшла форма перевірку
     const {register, handleSubmit, formState: {errors, isValid}} =
@@ -50,6 +50,7 @@ const Header = () => {
         // який можна безпечно передавати через URL
         navigate(`/search?query=${encodeURIComponent(data.query)}`);
     };
+
 
     return (
         <div>

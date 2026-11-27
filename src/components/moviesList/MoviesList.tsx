@@ -16,6 +16,10 @@ export const MoviesList = () => {
     const [movies, setMovies] = useState<IMovie[]>([]);
 
     const [genres, setGenres] = useState<IGenre[]>([]);
+    // sortOrderMovie - зберігає вибраний напрямок сортування.
+    //  setSortOrderMovies- змінює цей напрямок,useState<string>(" ")-початкове значення порожнє, тобто
+    //  фільми спочатку показуються у звичайному порядку.
+    const [sortOrderMovies, setSortOrderMovies] = useState<string>(" ");
 
     useEffect(() => {
         let currentPage=Number(query.get('page') || 1);
@@ -31,10 +35,35 @@ export const MoviesList = () => {
         });
     }, []);
 
+    //створюю сортувальний масив.[...movies]-копія мвсива тому що sort змінює початковий масив
+    const sortedMovies=[...movies].sort((a,b)=>{
+        //від більшого до меншого.
+        if(sortOrderMovies ==='max'){
+          return  b.vote_average-a.vote_average
+        }
+        // від меншого до більшого.
+        if (sortOrderMovies==='min'){
+            return  a.vote_average-b.vote_average
+        }
+        //якщо сортуванн яне вибрано то залишаеться початковий стан
+        return 0;
+    })
+
+
     return (
         <div className="movies-list">
+            <div className="sort-buttons">
+                <button onClick={() => setSortOrderMovies("max")}>
+                    Rating ↓
+                </button>
+
+                <button onClick={() => setSortOrderMovies("min")}>
+                    Rating ↑
+                </button>
+            </div>
+
             {
-                movies.map((movie) =>
+                sortedMovies.map((movie) =>
                     <MoviesListCard
                         key={movie.id}
                         movie={movie}
