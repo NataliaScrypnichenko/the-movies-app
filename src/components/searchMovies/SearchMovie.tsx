@@ -1,5 +1,5 @@
 //тільки відображатиме картки знайдених фільмів.
-import type {FC} from "react";
+import {type FC} from "react";
 import type {IMovie} from "../../models/IMovie.ts";
 import MoviesListCard from "../moviesListCard/MoviesListCard.tsx";
 import "../moviesList/MoviesList.css";

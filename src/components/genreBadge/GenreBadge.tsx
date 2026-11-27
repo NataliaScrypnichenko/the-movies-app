@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import type {IGenre} from "../../models/IGenre.ts";
 import {getGenresMovie} from "../../service/api.sevice.tsx";
+
 //компонент отримує дані ? є не обов'язковим
 type PropsType = {
     genre_ids?: number[];
@@ -49,7 +50,9 @@ const GenreBadge = ({genre_ids, genres}: PropsType) => {
                             </Link>
                     ))
                 }
+
             </div>
+
         </div>
     );
 };
